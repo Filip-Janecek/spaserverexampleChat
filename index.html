@@ -4,8 +4,9 @@
     <meta charset="UTF-8">
     <title>Příklad použití modulu spaserver</title>
     <script>
+        const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
         function ukazDen() {
-            let url = `http://localhost:8888/denvtydnu`;
+            let url = `${HOST}/denvtydnu`;
             fetch(url).then(function(response) {
                 response.text().then(function(text) {
                     let obj = JSON.parse(text);
@@ -15,7 +16,7 @@
             });
         }
         function ukazCas() {
-            let url = `http://localhost:8888/cas`;
+            let url = `${HOST}/cas`;
             fetch(url).then(function(response) {
                 response.text().then(function(text) {
                     let obj = JSON.parse(text);
@@ -25,8 +26,8 @@
         }
         function spustPoNacteni() {
             ukazDen();
-
-            setInterval(ukazCas, 10);
+            ukazCas();
+            setInterval(ukazCas, 10000);
 
             let dt = new Date();
             dt.setMonth(11); //prosinec
@@ -38,7 +39,7 @@
             let dt = document.getElementById("datum2").valueAsDate;
             if (!dt) return;
             let opt = null;
-            let url = `http://localhost:8888/denvtydnu`;
+            let url = `${HOST}/denvtydnu`;
             if (document.getElementById("GET").checked) {
                 url = `${url}?r=${dt.getFullYear()}&m=${dt.getMonth()+1}&d=${dt.getDate()}`;
             } else {

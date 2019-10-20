@@ -1,6 +1,6 @@
 const createSpaServer = require("spaserver").createSpaServer;
 
-const PORT = 8888;
+const PORT = 8080; //aplikace na Rosti.cz musi bezet na portu 8080
 
 const API_HEAD = {
     "Content-type": "application/json",
@@ -14,6 +14,7 @@ const DNY_V_TYDNU = ["Neděle","Pondělí","Úterý","Středa","Čtvrtek","Páte
 function processApi(req, res) {
     res.writeHead(200, API_HEAD);
     let obj = {};
+    obj.status = API_STATUS_OK;
     if (req.pathname === "/denvtydnu") {
         let dt = new Date();
         if (req.parameters.d && req.parameters.m && req.parameters.r) {
@@ -26,7 +27,7 @@ function processApi(req, res) {
         obj.den = denVTydnu;
     } else if (req.pathname === "/cas") {
         let dt = new Date();
-        obj.cas = `${dt.getHours()}:${dt.getMinutes()}`;
+        obj.cas = `${dt.getHours().toString().padStart(2,"0")}:${dt.getMinutes().toString().padStart(2,"0")}`;
     } else {
         obj.status = API_STATUS_NOT_FOUND;
         obj.error = "API not found";
