@@ -11,5 +11,8 @@
   "license": "ISC",
   "dependencies": {
     "spaserver": "git+https://github.com/liborsvejda/spaserver.git"
+  },
+  "devDependencies": {
+    "dateformat": "^3.0.3"
   }
 }

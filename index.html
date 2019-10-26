@@ -26,8 +26,7 @@
         }
         function spustPoNacteni() {
             ukazDen();
-            ukazCas();
-            setInterval(ukazCas, 10000);
+            setInterval(ukazCas, 1000);
 
             let dt = new Date();
             dt.setMonth(11); //prosinec
@@ -60,12 +59,12 @@
 
 <h1>Příklad použití modulu <a href="https://github.com/liborsvejda/spaserver" target="_blank">spaserver</a></h1>
 
-Dnes je <span id="den">...</span> <span id="datum">...</span>. Právě je  <span id="cas">...</span>.
+Dnes je <span id="den">...</span> <span id="datum">...</span>. Čas na serveru je  <span id="cas">...</span>.
 <br><br>
-Použiju metodu <input type="radio" name="metoda" id="GET" checked="checked">GET <input type="radio" name="metoda" id="POST">POST a zjistím, že
+Použiju metodu <input type="radio" name="metoda" id="GET" checked="checked">GET nebo <input type="radio" name="metoda" id="POST">POST a zjistím, že
 dne <input type="date" id="datum2" onchange="ukazDen2()"> byl(a/o)/bude <span id="den2">...</span>.
 <br><br>
-<img src="nodejs.png">
+<img src="res/nodejs.png">
 
 </body>
 </html>
