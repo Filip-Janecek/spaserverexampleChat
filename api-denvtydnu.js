@@ -8,7 +8,6 @@ exports.apiDenVTydnu = function (req, res, obj) {
         dt.setMonth(req.parameters.m-1);
         dt.setFullYear(req.parameters.r);
     }
-    let denVTydnu =
-    obj.den = DNY_V_TYDNU[dt.getDay()];;
+    obj.den = DNY_V_TYDNU[dt.getDay()];
     obj.datum = dateFormat(dt, "dd.mm.yyyy");
 }
